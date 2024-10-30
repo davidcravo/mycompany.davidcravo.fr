@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/assets/css/style_header.css">
     <link rel="stylesheet" href="/assets/css/style_home.css">
     <link rel="stylesheet" href="/assets/css/style_portfolio.css">
-
+    <link rel="stylesheet" href="/assets/css/style_newsletter.css">
     <link rel="stylesheet" href="/assets/css/style_footer.css">
 
 </head>

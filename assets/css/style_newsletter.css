@@ -1,0 +1,35 @@
+.newsletter_section{
+    margin: 1rem;
+}  
+
+.newsletter_section form{
+    margin: 1rem 0;
+}
+
+.newsletter_section input{
+    padding: 1rem;
+}
+
+.newsletter_section button{
+    padding: 1rem;
+    justify-content: center;
+    border: none;
+    color: #fff;
+    background: linear-gradient(#9BC2D9, #686663);
+}
+
+.newsletter_section button:hover{
+    color: #101519;
+}
+
+.newsletter_section p{
+    text-align: justify;
+}
+
+@media (min-width: 600px) and (max-width: 1024px){
+
+}
+
+@media (min-width: 1024px){
+    
+}
