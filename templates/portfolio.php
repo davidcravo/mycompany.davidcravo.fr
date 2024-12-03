@@ -4,7 +4,7 @@
     require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'header.php';
 
     $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'portfolio.csv';
-    $projects = array_reverse(get_csv_files($file));
+    $projects = array_reverse(get_csv_files($file, 'project'));
 ?>
 
 <main class="portfolio_main">
