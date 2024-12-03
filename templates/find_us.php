@@ -3,10 +3,13 @@
     require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'head.php'; 
     require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'header.php';
     
+    $file_addresses = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'addresses.csv';
+    $addresses = get_csv_files($file_addresses, 'address');
+
+    $file_time_slots = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'time_slots.csv';
+    $time_slots = get_csv_files($file_time_slots, 'time_slot');
+
     date_default_timezone_set('Europe/Paris');
-    $time = (int)date('H');
-    $time_slots = TIME_SLOTS[date('w')-1];
-    $open = in_time_slots($time, $time_slots);
 ?>
 
 <main class="main_find_us">
@@ -16,24 +19,24 @@
         <div class="right">
             <div class="opening_hours">
                 <h2>Horaires d'ouverture :</h2>
-                <?php if($open): ?>
-                    <p class="open">L'entreprise est ouverte</p>
-                <?php else: ?>
-                    <p class="close">L'entreprise est fermée</p>
-                <?php endif ?>
                 <ul>
-                    <?php foreach(DAYS as $k => $day): ?>
-                        <li class=<?= selected_date($k) ?>>
-                            <?= $day. ' : ' . time_slots_html(TIME_SLOTS[$k]) ?>
-                        </li>
-                    <?php endforeach ?>
+                    <?php
+                        foreach($time_slots as $value){
+                            $time_slot = new Time_slot($value['day_of_the_week'], $value['am_start'], $value['am_end'], $value['pm_start'], $value['pm_end']);
+                            $selected = ($time_slot->get_day_of_the_week() === DAYS[date('l')]) ? 'selected' : '';
+                            echo $time_slot->time_slot_html($selected);
+                        }
+                    ?>
                 </ul>
             </div>
             <div class="address">
                 <h2>Adresses :</h2>
-                <?php foreach(ADDRESSES as $address): ?>
-                    <p> <?= addresses_html($address) ?> </p>
-                <?php endforeach ?>
+                <?php 
+                    foreach($addresses as $address){
+                        $address_object = new Address($address['street_address'], $address['postal_code'], $address['city'], $address['country']);
+                        echo $address_object->address_html();
+                    } 
+                ?>
             </div>
         </div>            
         
