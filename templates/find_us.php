@@ -24,7 +24,7 @@
                     <?php
                         foreach($time_slots as $value){
                             $time_slot = new Time_slot($value['day_of_the_week'], $value['am_start'], $value['am_end'], $value['pm_start'], $value['pm_end']);
-                            $selected = ($time_slot->get_day_of_the_week() === $days[date('l')]) ? 'selected' : '';
+                            $selected = (strtolower($time_slot->get_day_of_the_week()) === strtolower($days[date('l')]) ? 'selected' : '');
                             echo $time_slot->time_slot_html($selected);
                         }
                     ?>

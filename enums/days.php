@@ -1,23 +1,23 @@
 <?php
 
 enum Day: string{
-    case Monday = 'monday';
-    case Tuesday = 'tuesday';
-    case Wednesday = 'wednesday';
-    case Thursday = 'thursday';
-    case Friday = 'friday';
-    case Saturday = 'saturday';
-    case Sunday = 'sunday';
+    case Monday = 'Monday';
+    case Tuesday = 'Tuesday';
+    case Wednesday = 'Wednesday';
+    case Thursday = 'Thursday';
+    case Friday = 'Friday';
+    case Saturday = 'Saturday';
+    case Sunday = 'Sunday';
 
     public function label(): string{
         return match($this){
-            self::Monday => 'lundi',
-            self::Tuesday => 'mardi',
-            self::Wednesday => 'mercredi',
-            self::Thursday => 'jeudi',
-            self::Friday => 'vendredi',
-            self::Saturday => 'samedi',
-            self::Sunday => 'dimanche'
+            self::Monday => 'Lundi',
+            self::Tuesday => 'Mardi',
+            self::Wednesday => 'Mercredi',
+            self::Thursday => 'Jeudi',
+            self::Friday => 'Vendredi',
+            self::Saturday => 'Samedi',
+            self::Sunday => 'Dimanche'
         };
     }
 
