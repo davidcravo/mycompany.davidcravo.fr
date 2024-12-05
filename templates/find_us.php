@@ -10,6 +10,7 @@
     $time_slots = get_csv_files($file_time_slots, 'time_slot');
 
     date_default_timezone_set('Europe/Paris');
+    $days = Day::getDayKeysValues();
 ?>
 
 <main class="main_find_us">
@@ -23,7 +24,7 @@
                     <?php
                         foreach($time_slots as $value){
                             $time_slot = new Time_slot($value['day_of_the_week'], $value['am_start'], $value['am_end'], $value['pm_start'], $value['pm_end']);
-                            $selected = ($time_slot->get_day_of_the_week() === DAYS[date('l')]) ? 'selected' : '';
+                            $selected = ($time_slot->get_day_of_the_week() === $days[date('l')]) ? 'selected' : '';
                             echo $time_slot->time_slot_html($selected);
                         }
                     ?>
